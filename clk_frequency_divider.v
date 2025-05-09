@@ -24,10 +24,11 @@ module clk_frequency_divider
     #(parameter N = 5)
     (input clk, rst,
     output clk_out);
+
     localparam size = $clog2(N);
     genvar i;
-
     reg [size-1:0] pos_cnt;
+
     generate
     case(N%2)
     0:
