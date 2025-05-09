@@ -20,11 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module clk_frequency_divider(
-    input clk, rst,
-    output clk_out
-    );   
-    parameter N = 5;
+module clk_frequency_divider
+    #(parameter N = 5)
+    (input clk, rst,
+    output clk_out);
     localparam size = $clog2(N);
     genvar i;
 
@@ -35,7 +34,14 @@ module clk_frequency_divider(
     begin: Even_Number
         if(N==2**size)
         begin: Base2_Exponential
-            always@(posedge clk or posedge rst)
+            always@(posedge clk or posedge rst) //Synchronous
+            begin
+                if(rst) pos_cnt <= 0;
+                else pos_cnt <= pos_cnt+1;
+            end
+            assign clk_out = pos_cnt[size-1];
+            /*
+            always@(posedge clk or posedge rst) //Asynchronous
             begin
                 if(rst) pos_cnt[0] <= 0;
                 else pos_cnt[0] <= ~pos_cnt[0];
@@ -49,6 +55,7 @@ module clk_frequency_divider(
                 end
             end
             assign clk_out = pos_cnt[size-1];
+            */
         end
         else
         begin: Non_Base2_Exponential
