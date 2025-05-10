@@ -2,7 +2,7 @@
 module clk_frequency_divider
     #(parameter N = 5)
     (input clk, rst,
-    output clk_out);
+     output clk_out);
 
     localparam size = $clog2(N);
     genvar i;
