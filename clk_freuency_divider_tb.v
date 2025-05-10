@@ -1,25 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: Dhavala Tarun Kumar
-// 
-// Create Date: 06.05.2025 11:40:54
-// Design Name: 
-// Module Name: clk_freuency_divider_tb
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
-
 module clk_freuency_divider_tb;
     reg clk, rst;
     wire clk_out;
